@@ -18,7 +18,7 @@ Se busca determinar si existe un número de casa tal que la suma de los números
 
 ### Entrada
 - La primera línea contiene un número `C` → la cantidad de casos (máx. 20000).  
-- Las siguientes `C` líneas contienen un entero `N` → el número de casas (máx. `1e10`).  
+- Las siguientes `C` líneas contienen un entero `N` → el número de casas (máx. `1E10`).  
 
 ### Salida
 - Para cada caso, imprimir el número de la casa que cumple la condición o `"NO"` si no existe.  
