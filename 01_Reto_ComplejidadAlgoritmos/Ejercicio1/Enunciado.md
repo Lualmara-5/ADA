@@ -14,7 +14,11 @@ Se busca determinar si existe un número de casa tal que la suma de los números
 
 **Ejemplo:**
 - Para `N = 8`, la respuesta es la casa **6**.  
-- Para `N = 5`, la respuesta es **NO**.  
+- Para `N = 5`, la respuesta es **NO**.
+
+| Casas izquierda | <div align="center">Casa candidata</div> | Casas derecha |
+|-----------------|:---------------------------------------:|---------------|
+| <div align="center">1 + 2 + 3 + 4 + 5 = **15**</div> | <div align="center">6</div> | <div align="center">7 + 8 = **15** </div> |
 
 ### Entrada
 - La primera línea contiene un número `C` → la cantidad de casos (máx. 20000).  
