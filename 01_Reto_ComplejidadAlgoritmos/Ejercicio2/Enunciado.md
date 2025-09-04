@@ -5,9 +5,9 @@ Una programadora vive en una ciudad donde todas las calles están numeradas cons
 
 Un día, al salir de su casa a trotar, giró a la izquierda y sumó los cuadrados de los números de las calles en esa dirección (sin incluir su propia calle).  
 
-Al día siguiente hizo lo mismo pero hacia la derecha. Para su sorpresa, **la suma de la derecha resultó múltiplo de la de la izquierda**.  
+Al día siguiente hizo lo mismo pero hacia la derecha. Para su sorpresa, **la suma de la derecha resultó múltiplo de la de la izquierda**.   
 
-Se pide determinar cuántas calles posibles `(S)` existen para que se cumpla esta condición. 
+Diseñemos entonces un algoritmo para determinar, dados el valor de (M) ((3 < M < 10000)) en cuántas calles (S) ((2 < S < M)) podría vivir la programadora para que se cumpla esa propiedad.
 
 ---
 
@@ -19,6 +19,8 @@ $4^2$ + $5^2$ + $6^2$ + $7^2$ + $8^2$ = 190
 Es múltiplo de:
 
 $1^2$ + $2^2$ = 5
+
+Por otro lado, si (M = 42), hay dos calles (S) que cumplen la propiedad: (5) y (14).
 
 ---
 
