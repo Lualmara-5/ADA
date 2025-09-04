@@ -1,4 +1,4 @@
-# 📘 Ejercicio B: Número de Calle
+# 📘 Ejercicio 2: Número de Calle
 
 ## 📝 Enunciado
 Una programadora vive en una ciudad donde todas las calles están numeradas consecutivamente desde `1` hasta `M`.  
