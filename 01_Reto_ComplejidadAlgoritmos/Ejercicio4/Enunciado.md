@@ -1,63 +1,51 @@
-# 🔁 Ejercicio 4: Números de Lychrel
+# 🧮 Ejercicio 4: Números de Kaprekar
 
-## 📝 Enunciado
-- Un capicúa es un número natural de al menos dos dígitos que se lee igual de izquierda a derecha y de derecha a izquierda.
-**Ejemplo:** 363, 1221.
+---
 
-- El proceso consiste en que dado un número `n`:
-    - Invertir sus cifras → `rev(n)`.
-    - Sumarlo: `n = n + rev(n)`.
-    - Repetir hasta obtener un capicúa.
+## 📖 Enunciado
 
-- Si se obtiene un capicúa, la salida es el número de iteraciones necesarias.
-- Si `n` ya es capicúa desde el inicio → `0`.
-- Si durante el proceso el número llega a un valor `>= 1e10`, se imprime `"L"` para indicar que se sospecha que es un número de Lychrel.
+Un número **Kaprekar** es un entero positivo mayor a 3 que cumple la siguiente propiedad:
 
-- **Ejemplos**:
+1. Se eleva al cuadrado.
 
-`75 → 75+57=132 → 132+231=363` (capicúa en 2 pasos).
+2. Se separa el resultado en dos partes (izquierda y derecha).
 
-`145 → 145+541=686` (capicúa en 1 paso).
+3. La **suma de ambas partes** es igual al número original.
 
-- Un **número de Lychrel** sería aquel que nunca llega a un capicúa aplicando este proceso.
+### ⚡ Ejemplos:
 
-👉 No se sabe si existen realmente. El caso más famoso es el **196**, que no se ha demostrado aún si converge.
+- (9² = 81) → (8 + 1 = 9) ✅ (Kaprekar)
+- (2728² = 7441984) → (744 + 1984 = 2728) ✅ (Kaprekar)
+- (4879² = 23804641) → (238 + 04641 = 4879) ✅ (Kaprekar)
+- (100² = 10000) → (100 + 00 = 100) ❌ (NO Kaprekar)
+
+⚠️ La segunda parte nunca puede ser nula, pero puede empezar en ceros.
 
 ---
  
 ## 📤 Entrada
-- Varios casos de prueba (≤ 1000).
-- Cada caso es un número entero positivo, de al menos 2 dígitos y menor que 10000.
-- La entrada termina con un 0, que no es un caso de prueba.
+- La primera línea contiene un entero `C` → cantidad de casos (≤ 20000).
+- Luego siguen `C` líneas, cada una con un número entero positivo `< 1e6`.
 
 ## 📤 Salida
-- Para cada caso, imprimir en una línea:
-    - El número de iteraciones requeridas para llegar a un capicúa.
-    - `"L"` si se supera el límite de `1e10`.
+- Para cada caso imprimir una línea:
+    - `"KAP"` si el número es Kaprekar.
+    - `"NO"` en caso contrario.
 
 ## ✅Ejemplo
 
 ### Entrada:
 ```bash
-145
-32123
-75
-196
-2584
-0
+3
+2728
+100
+4879
 ```
 ### Salida:
 ```bash
-1
-0
-2
-L
-L
+KAP
+NO
+KAP
 ```
 
-### Explicación:
-- `145 → 686` (1 iteración).
-- `32123` ya es capicúa (0 iteraciones).
-- `75 → 132 → 363` (2 iteraciones).
-- `196` crece demasiado → sospechoso (`L`).
-- `2584` también crece hasta superar `1e10` → (`L`).
+---
