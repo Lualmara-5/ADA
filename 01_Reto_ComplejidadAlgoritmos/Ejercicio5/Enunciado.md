@@ -1,4 +1,4 @@
-# 🔁 Ejercicio 4: Números de Lychrel
+# 🔁 Ejercicio 5: Números de Lychrel
 
 ## 📝 Enunciado
 - Un capicúa es un número natural de al menos dos dígitos que se lee igual de izquierda a derecha y de derecha a izquierda.
