@@ -10,7 +10,7 @@ Los algoritmos ad-hoc se caracterizan por estar diseñados para resolver **un pr
 
 1. **Cantidad de divisores y Algoritmos ad-hoc**
 
-2. **Mínimo común múltiplo y Algoritmo de Euclides**
+2. [**Mínimo común múltiplo y Algoritmo de Euclides**](#-ejemplo-mínimo-común-múltiplo-de-dos-enteros)
 
 3. **Números primos y Criba de Eratóstenes**
 
@@ -143,7 +143,42 @@ La complejidad es: `O(N)` (sigue siendo O(N), pero **más eficiente en la práct
 
 ---
 
-## 📊 Ejemplo: ?
+## 📊 Ejemplo: Mínimo común múltiplo de dos enteros
+Dados dos enteros positivos A y B, cuál es el mínimo valor que es múltiplo de ambos
+
+### 📝 Solución 1 (pseudocódigo)
+```bash
+read A, B
+mayor = max(A,B)
+menor = min(A,B)
+
+for M = mayor to mayor*menor step mayor:
+    if M % menor == 0:
+        print M
+        break
+```
+
+### 🔎 ¿Qué hace?
+- Arranca en el mayor de los dos números.
+- Va sumando de a "mayor" (step mayor).
+- Se detiene cuando encuentra un múltiplo de "menor".
+- Ese será el mínimo común múltiplo.
+
+Ejemplo:
+- A = 6, B = 4
+- mayor = 6, menor = 4
+- Probar: 6, 12, 18, 24 → el 12 funciona, porque 12%4 = 0.
+- Resultado: mcm = 12 ✅
+
+### ⚡ Complejidad
+El ciclo no recorre hasta infinito, sino que como máximo llega hasta: `mayor x menor` <br> *(porque siempre se garantiza que ahí ya estará un múltiplo común)*.
+
+Pero no da cada paso de 1, sino de **"mayor"**.
+Es decir, el número de pasos que el bucle hace es: `(mayor x menor) / mayor = menor `
+
+👉 Eso significa que en el peor caso, el ciclo hace menor iteraciones.
+👉 La complejidad es: `O(min(A,B)`
 
 ---
+
 
