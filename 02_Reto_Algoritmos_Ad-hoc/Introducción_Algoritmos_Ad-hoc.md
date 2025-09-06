@@ -1,0 +1,146 @@
+# 📘 Introducción a Algoritmos Ad-hoc
+
+En este módulo estudiaremos los **algoritmos ad-hoc**, junto con problemas clásicos relacionados con divisores, múltiplos, primos y búsqueda de elementos dominantes.
+
+Los algoritmos ad-hoc se caracterizan por estar diseñados para resolver **un problema específico** de forma directa y eficiente, sin necesidad de recurrir a técnicas más generales o complejas como programación dinámica o divide & conquer.
+
+---
+
+## 📚 Temas a tratar
+
+1. **Cantidad de divisores y Algoritmos ad-hoc**
+
+2. **Mínimo común múltiplo y Algoritmo de Euclides**
+
+3. **Números primos y Criba de Eratóstenes**
+
+4. **Elemento dominante y Algoritmo Boyer-Moore**
+
+5. **Algoritmo Z (búsqueda de patrones en cadenas)**
+
+---
+
+## 🛠️ Metodologías de solución de problemas computacionales
+En la resolución de problemas de programación competitiva y análisis algorítmico existen diferentes metodologías o enfoques:
+- **Búsqueda exhaustiva (Brute force):** probar todas las posibilidades.
+- **Algoritmos voraces (Greedy):** elegir siempre la mejor opción local en cada paso.
+- **Programación dinámica (Dynamic programming):** dividir un problema en subproblemas que se resuelven de forma óptima.
+- **Divide y vencerás (Divide & Conquer):** dividir el problema en partes más pequeñas, resolverlas y combinar las soluciones.
+- **Algoritmos ad-hoc:** soluciones específicas y directas, diseñadas a medida del problema.
+
+---
+
+## 📊 Ejemplo: divisores
+Dado un valor entero positivo `N`, mostrar todos sus divisores diferentes de `1` y `N`.
+
+### 📝 Solución 1 (pseudocódigo)
+```bash
+read N
+for i = 2 to N-1:
+    if N % i == 0:
+        print i
+```
+
+📌 Si `N = 100`, la salida sería:
+```bash
+2, 4, 5, 10, 20, 25, 50
+```
+
+### ⚡ Complejidad
+El bucle recorre `N-2` valores, por lo que el número de operaciones es: `f(N) = N - 1`
+
+La complejidad es: `O(N)`
+
+---
+
+### 📝 Solución 2 (pseudocódigo)
+```bash
+read N
+for i = 2 to N//2:
+if N % i = 0:
+print i
+```
+
+📌 Si `N = 100`, la salida sería:
+```bash
+2, 4, 5, 10, 20, 25, 50
+```
+
+### 🚀 ¿Qué cambia respecto a la Solución 1?
+En la primera ibas de `2` hasta `N-1`.
+Pero piensa:
+
+👉 ¿tiene sentido dividir `N` por un número mayor que `N/2`?
+
+Ejemplo:
+- Si `N = 100`, ¿sirve probar `i = 60`? <br>
+No, porque `100 / 60 ≈ 1.66`, nunca va a dar un divisor exacto. <br>
+El máximo divisor distinto de N siempre está en `N/2`.
+
+Por eso ahora el bucle llega solo hasta `N//2`.
+
+### ⚡ Complejidad
+Ahora el bucle va hasta `N/2` en lugar de `N`.
+- En Solución 1: ≈ **N operaciones**
+- En Solución 2: ≈ **N/2 operaciones**
+
+Matemáticamente: `f(N)= (N/2) −1 +1 =(N/2)`
+
+La complejidad es: `O(N)` (sigue siendo O(N), pero **más eficiente en la práctica** porque hace la mitad de comparaciones.)
+
+---
+
+### 📝 Solución 3 (pseudocódigo)
+```bash
+read N
+for i = 2 to sqrt(N):
+    if N % i == 0:
+        if i ≠ sqrt(N):
+            print(i, N/i)
+        else:
+            print(i)   
+```
+
+📌 Si `N = 100`, la salida sería:
+```bash
+2, 50, 4, 25, 5, 20, 10
+```
+
+### 💡 Cambio clave
+En lugar de iterar hasta `N`, el bucle va solo hasta √N.
+
+¿Por qué? Porque los divisores vienen en pares complementarios:
+- Si `i` divide a `N`, entonces también `N/i` es divisor.
+- Basta con encontrar los menores o iguales a √N, y el complemento lo sacamos con `N/i`.
+
+Ejemplo con `N = 100`:
+- Recorres hasta √100 = 10.
+- Cuando `i = 2` → imprimes `2` y `100/2 = 50`.
+- Cuando `i = 4` → imprimes `4` y `25`.
+- Cuando `i = 5` → imprimes `5` y `20`.
+- Cuando `i = 10` (justo la raíz) → solo imprimes una vez el 10, no dos.
+
+👉 Así obtienes los divisores con menos iteraciones y sin perder ninguno.
+
+### ⚡ Complejidad
+- El bucle ya no recorre `N` ni `N/2`.
+- Solo va hasta **√N**.
+- Entonces la complejidad es: `O(√N)`
+
+Lo que es muchísimo mejor que `O(N)` cuando `N` es grande. 🚀
+
+### 📊 Resumen de las 3 soluciones:
+
+1. For hasta `N-1` → **O(N)**
+
+2. For hasta `N/2` → **O(N)** (mitad de operaciones, pero misma clase)
+
+3. For hasta `√N` → **O(√N)** ✅ la mejor
+
+Matemáticamente: `f(N)= (N/2) −1 +1 =(N/2)`
+
+---
+
+## 📊 Ejemplo: ?
+
+La complejidad es: `O(N)` (sigue siendo O(N), pero **más eficiente en la práctica** porque hace la mitad de comparaciones.)
