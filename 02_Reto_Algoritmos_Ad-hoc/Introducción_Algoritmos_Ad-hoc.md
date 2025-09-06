@@ -181,5 +181,42 @@ Es decir, el número de pasos que el bucle hace es: `(mayor x menor) / mayor = m
 
 ---
 
+### 📝 Solución 2 (pseudocódigo + Algoritmo de Euclides)
+El algoritmo de Euclides se basa en:
+1. Al dividir `M` entre `N`, ambos números enteros, se obtiene un cociente `Q` más un residuo `R`
+2. El máximo común divisor de `M` y `N` es igual que el de `N` y `R`
+3. A*B = MinimoComunMultiplo(A, B) * MaximoComunDivisor(A, B)
 
+```bash
+read A, B
+M, N = A, B
 
+while N ≠ 0:
+    M, N = N, M%N
+
+MaxCD = M
+MinCM= A*B/MaxCD
+```
+
+### 📊 Ejemplo:
+A es 1043, B es 987 → M = 1043, N = 987
+
+- Iteración 1: M = 987, N = 56 -> *(1043 = 987 × 1 + 56)*
+- Iteración 2: M = 56, N = 35
+- Iteración 3: M = 35, N = 21
+- Iteración 4: M = 21, N = 14
+- Iteración 5: M = 14, N = 7
+- Iteración 6: M = 7, N = 0 (versus 141 iteraciones de la solución 1)
+  
+**MinCD** = 1043 * 987 / 7 = **147063**
+
+*Nota:* En Python existen los métodos gcd() y lcm() en la librería math*
+
+### ⚡ Complejidad
+- La complejidad del algoritmo es O(log(max(A,B))
+
+---
+
+## 📊 Ejemplo: 3
+## 📊 Ejemplo: 4
+## 📊 Ejemplo: 5
