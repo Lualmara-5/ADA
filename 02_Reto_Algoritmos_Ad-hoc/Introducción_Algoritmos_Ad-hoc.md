@@ -8,15 +8,15 @@ Los algoritmos ad-hoc se caracterizan por estar diseñados para resolver **un pr
 
 ## 📚 Temas a tratar
 
-1. **Cantidad de divisores y Algoritmos ad-hoc**
+🔹1. [**Cantidad de divisores y Algoritmos ad-hoc**](#-ejemplo-divisores)
 
-2. [**Mínimo común múltiplo y Algoritmo de Euclides**](#-ejemplo-mínimo-común-múltiplo-de-dos-enteros)
+🔹2. [**Mínimo común múltiplo y Algoritmo de Euclides**](#-ejemplo-mínimo-común-múltiplo-de-dos-enteros)
 
-3. **Números primos y Criba de Eratóstenes**
+🔹3. [**Números primos y Criba de Eratóstenes**](#-)
 
-4. **Elemento dominante y Algoritmo Boyer-Moore**
+🔹4. [**Elemento dominante y Algoritmo Boyer-Moore**](#-)
 
-5. **Algoritmo Z (búsqueda de patrones en cadenas)**
+🔹5. [**Algoritmo Z (búsqueda de patrones en cadenas)**](#-)
 
 ---
 
@@ -180,5 +180,6 @@ Es decir, el número de pasos que el bucle hace es: `(mayor x menor) / mayor = m
 👉 La complejidad es: `O(min(A,B)`
 
 ---
+
 
 
