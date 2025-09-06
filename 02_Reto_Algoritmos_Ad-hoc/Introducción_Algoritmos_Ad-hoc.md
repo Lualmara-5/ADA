@@ -139,8 +139,11 @@ Lo que es muchísimo mejor que `O(N)` cuando `N` es grande. 🚀
 
 Matemáticamente: `f(N)= (N/2) −1 +1 =(N/2)`
 
+La complejidad es: `O(N)` (sigue siendo O(N), pero **más eficiente en la práctica** porque hace la mitad de comparaciones.)
+
 ---
 
 ## 📊 Ejemplo: ?
 
-La complejidad es: `O(N)` (sigue siendo O(N), pero **más eficiente en la práctica** porque hace la mitad de comparaciones.)
+---
+
