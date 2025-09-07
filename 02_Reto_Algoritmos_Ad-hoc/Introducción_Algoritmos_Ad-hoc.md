@@ -12,9 +12,9 @@ Los algoritmos ad-hoc se caracterizan por estar diseñados para resolver **un pr
 
 🔹2. [**Mínimo común múltiplo y Algoritmo de Euclides**](#-ejemplo-mínimo-común-múltiplo-de-dos-enteros)
 
-🔹3. [**Números primos y Criba de Eratóstenes**](#-)
+🔹3. [**Números primos y Criba de Eratóstenes**](#-ejemplo-números-primos)
 
-🔹4. [**Elemento dominante y Algoritmo Boyer-Moore**](#-)
+🔹4. [**Elemento dominante y Algoritmo Boyer-Moore**](#-ejemplo-elemento-dominante)
 
 🔹5. [**Algoritmo Z (búsqueda de patrones en cadenas)**](#-)
 
@@ -217,6 +217,114 @@ A es 1043, B es 987 → M = 1043, N = 987
 
 ---
 
-## 📊 Ejemplo: 3
-## 📊 Ejemplo: 4
+## 📊 Ejemplo: Números primos
+Dado un valor entero N mayor a 1, mostrar todos los números primos menores
+o iguales a N
+### 📝 Solución 1 (pseudocódigo)
+```bash
+read N
+for i=2 to N
+    primo = True
+    for j=2 to i-1
+        if i % j = 0
+            primo = False
+    if primo
+        print i
+```
+
+Ejemplo:
+
+`i = 9`, `j = 3` → `9`
+`9` → entonces `9` no es primo.
+
+`i = 7`, `j = 2,3,4,5,6` → nunca da residuo 0 → entonces `7` sí es primo.
+
+### ⚡ Complejidad
+Números de operaciones:
+- 1 + (N − 1) (1 + (N − 2) ∗ 2 + 1 + 1)
+- f(N) = $2N^2$ − 3N+1
+- O($N^2$)
+
+### 📝 Solución 2 (pseudocódigo)
+```bash
+read N
+for i=2 to N
+    primo = True
+    for j=2 to √i
+        if i % j = 0
+            primo = False
+    if prime
+        print i
+```
+
+#### 📊 Ejemplo con 37
+
+- Raíz de 37 ≈ 6.08.
+- Solo reviso divisores posibles: `2, 3, 4, 5, 6`.
+- No divide entre ninguno → ✅ primo.
+
+En la versión antigua tenía que chequear hasta 36. Mucho más lento.
+
+#### 📊 Ejemplo con 100
+
+- Raíz de 100 = 10.
+- Divisores posibles hasta 10: `2, 3, 4, 5, 6, 7, 8, 9, 10`.
+- Detecto que 100 % 2 == 0 y ya lo marco como no primo.
+
+En la versión vieja se tenía que chequear hasta 99.
+
+### ⚡ Complejidad
+Número de operaciones:
+- 1 + 1 + (N − 1) (1 + (√N − 1) ∗ 2 + 1 + 1)
+- f(N) = 2N√N + N - 2√N + 1
+- O(N^(3/2))
+
+### 📝 Solución 3 (Criba de Eratóstenes)
+La **Criba de Eratóstenes** es un algoritmo clásico para encontrar todos los números primos hasta un número `N`.  
+
+La idea es ir eliminando (marcando como `False`) todos los múltiplos de cada número primo encontrado, comenzando desde `2`
+
+#### 📌 Pasos del algoritmo
+1. Crear una lista con los números del `2` al `N`, todos marcados inicialmente como `True`.
+2. Tomar el primer número con valor `True` → es primo.
+3. Marcar como `False` todos sus múltiplos, empezando desde su cuadrado.
+4. Repetir el proceso con el siguiente número que siga marcado como `True`.
+5. El algoritmo termina cuando el cuadrado del número actual es mayor que `N`.
+6. Los números que queden en `True` son los primos.
+
+#### 🧮 Ejemplo: N = 20
+![Ejemplo Criba de Eratóstenes](./02_Reto_Algoritmos_Ad-hoc/img/Criba_de_Eratóstenes.png)
+
+
+```bash
+func criba(N):
+    crear lista primo[2..N] y asignar True a todos
+    para i = 2 hasta √N:
+        si primo[i] es True:
+            para j = i*i hasta N con paso i:
+                primo[j] = False
+    devolver todos los índices i donde primo[i] = True
+```
+### ⚡ Complejidad
+- Tiempo: `O(N log log N)` → mucho más rápido que probar divisores uno por uno.
+- Memoria: `O(N)` → se necesita un arreglo de tamaño `N` para guardar los booleanos.
+
+---
+
+## 📊 Ejemplo: Elemento dominante
+### 📝 Solución 1 (pseudocódigo)
+```bash
+```
+### ⚡ Complejidad
+
+---
+
+
 ## 📊 Ejemplo: 5
+### 📝 Solución 1 (pseudocódigo)
+```bash
+```
+### ⚡ Complejidad
+
+---
+
