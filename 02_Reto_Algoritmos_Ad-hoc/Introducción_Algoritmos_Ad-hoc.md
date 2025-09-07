@@ -293,7 +293,7 @@ La idea es ir eliminando (marcando como `False`) todos los múltiplos de cada n�
 6. Los números que queden en `True` son los primos.
 
 #### 🧮 Ejemplo: N = 20
-![Ejemplo Criba de Eratostenes](./02_Reto_Algoritmos_Ad-hoc/Img/Criba_de_Eratostenes.png)
+![Ejemplo Criba de Eratostenes](./Img/Criba_de_Eratostenes.png)
 
 
 ```bash
@@ -327,5 +327,6 @@ func criba(N):
 ### ⚡ Complejidad
 
 ---
+
 
 
