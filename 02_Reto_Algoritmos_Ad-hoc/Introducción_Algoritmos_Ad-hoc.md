@@ -129,6 +129,8 @@ Ejemplo con `N = 100`:
 
 Lo que es muchísimo mejor que `O(N)` cuando `N` es grande. 🚀
 
+---
+
 ### 📊 Resumen de las 3 soluciones:
 
 1. For hasta `N-1` → **O(N)**
@@ -245,6 +247,8 @@ Números de operaciones:
 - f(N) = $2N^2$ − 3N+1
 - O($N^2$)
 
+---
+
 ### 📝 Solución 2 (pseudocódigo)
 ```bash
 read N
@@ -278,6 +282,8 @@ Número de operaciones:
 - 1 + 1 + (N − 1) (1 + (√N − 1) ∗ 2 + 1 + 1)
 - f(N) = 2N√N + N - 2√N + 1
 - O(N^(3/2))
+
+---
 
 ### 📝 Solución 3 (Criba de Eratóstenes)
 La **Criba de Eratóstenes** es un algoritmo clásico para encontrar todos los números primos hasta un número `N`.  
@@ -327,6 +333,7 @@ func criba(N):
 ### ⚡ Complejidad
 
 ---
+
 
 
 
