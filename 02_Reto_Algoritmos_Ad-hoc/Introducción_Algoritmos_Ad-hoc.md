@@ -16,8 +16,6 @@ Los algoritmos ad-hoc se caracterizan por estar diseñados para resolver **un pr
 
 🔹4. [**Elemento dominante y Algoritmo Boyer-Moore**](#-ejemplo-elemento-dominante)
 
-🔹5. [**Algoritmo Z (búsqueda de patrones en cadenas)**](#-)
-
 ---
 
 ## 🛠️ Metodologías de solución de problemas computacionales
@@ -312,28 +310,214 @@ func criba(N):
     devolver todos los índices i donde primo[i] = True
 ```
 ### ⚡ Complejidad
-- Tiempo: `O(N log log N)` → mucho más rápido que probar divisores uno por uno.
+- Tiempo: `O(N*log(log(N))` → mucho más rápido que probar divisores uno por uno.
 - Memoria: `O(N)` → se necesita un arreglo de tamaño `N` para guardar los booleanos.
 
 ---
 
 ## 📊 Ejemplo: Elemento dominante
-### 📝 Solución 1 (pseudocódigo)
+Dado un arreglo X con N elementos enteros (aunque se puede extrapolar a otros tipos) determinar cuál, si es que lo hay, aparece más de N/2 veces
+
+Ejemplo: [9, 6, 8, 5, 8, 8, 7, 8, 8]
+
+N=9
+N/2 = 4.5 → o sea que el elemento dominante debe aparecer 5 o más veces.
+
+El número `8` aparece 5 veces → ¡es el dominante!
+### 📝 Solución 1 (Trivial) (pseudocódigo)
 ```bash
+solucion1(X, N):
+    max_conteo = 1                # hasta ahora, el máximo de apariciones es 1
+    for i = 0 to N-2:             # recorro cada posición del arreglo
+        conteo = 1                # cada elemento aparece al menos 1 vez (él mismo)
+        for j = i+1 to N-1:       # comparo contra todos los que están a la derecha
+            if Xi = Xj:           # si encuentro un igual
+                conteo += 1       # sumo al conteo
+        if conteo > max_conteo:   # si este número apareció más veces que el anterior "máximo"
+            max_conteo = conteo   # actualizo el máximo
+            dominante = Xi        # guardo el número candidato a dominante
+    if max_conteo > N/2:          # al final, verifico si en verdad supera N/2
+        print dominante           # si sí, lo imprimo
 ```
+#### 📌 Ejemplo trabajado:
+1. i = 0 → X[0] = 9
+- Comparo con el resto → no hay otro 9.
+- `conteo = 1` → no supera el `max_conteo`.
+
+2. i = 1 → X[1] = 6
+- Igual, solo un 6.
+- `conteo = 1`.
+
+3. i = 2 → X[2] = 8
+- Comparo con [5, 8, 8, 7, 8, 8] → aparecen **4 más**.
+- `conteo = 5`.
+- Ahora `max_conteo = 5`, y el `dominante = 8`.
+
+… y así sigue, pero ya sabemos que ningún otro pasará de 5.
+
+Resultado final → dominante = 8 ✅
+
 ### ⚡ Complejidad
+- Tiempo: O($N^2$)
+- Memoria: `O(1)` (solo usamos unas cuantas variable (`conteo`, `max_conteo`, `dominante`))
+  
+---
+
+### 📝 Solución 2 (Ordenamiento) (pseudocódigo)
+#### 📌 Idea principal
+Si ordenamos el arreglo, los elementos **iguales quedan juntos**.
+
+Eso simplifica muchísimo el conteo: ya no necesito comparar cada elemento con todos los demás, sino solo contar cuántas veces seguidas aparece.
+```bash
+solucion2(X, N):
+    X.sort()                        # 1. Ordenar el arreglo
+    k, conteo, max_conteo = 0       # k marca el inicio de un grupo de iguales
+    for i = 0 to N-1:               # 2. Recorremos el arreglo
+        if Xi = Xk:                 # seguimos dentro del mismo grupo
+            conteo += 1
+            if conteo > max_conteo: # si este grupo es el más largo hasta ahora
+                max_conteo = conteo
+                dominante = Xi
+        else:                       # si cambia el número
+            conteo = 0              # reiniciamos el conteo
+            k = i+1                 # y actualizamos k al nuevo inicio
+    if max_conteo > N/2:            # 3. ¿Se cumple la condición de dominante?
+        print dominante
+```
+#### 📌 Ejemplo trabajado:
+Arreglo inicial: [9, 6, 8, 5, 8, 8, 7, 8, 8]
+
+1. Ordenamos: [5, 6, 7, 8, 8, 8, 8, 8, 9]
+
+2. Recorremos contando:
+- `5` → aparece 1 vez.
+- `6` → aparece 1 vez.
+- `7` → aparece 1 vez.
+- `8` → aparece 5 veces seguidas → ahora `dominante = 8`.
+- `9` → aparece 1 vez.
+
+3. Verificamos:
+- max_conteo = 5
+- N/2 = 4.5
+- 5 > 4.5 -> dominante = 8 ✅
+
+Verificamos:
+### ⚡ Complejidad
+- Tiempo: `O(N*log(N))`
+- Memoria: `O(1)` (Solo unas variables (`conteo`, `max_conteo`, `k`, `dominante`))
 
 ---
 
-
-## 📊 Ejemplo: 5
-### 📝 Solución 1 (pseudocódigo)
+### 📝 Solución 3 (Diccionario) (pseudocódigo)
 ```bash
+solucion3(X, N):
+    d = diccionario
+    max_conteo = 1
+    for i = 0 to N-1
+        if Xi not in d:
+            d.add(Xi, 1)
+        else:
+            d.update(Xi, d.value(Xi)+1)
+            if d.value(Xi) > max_conteo
+                max_conteo = d.value(Xi)
+                dominante = Xi
+    if max_conteo > N/2
+        print dominante
 ```
+#### 📌 Ejemplo trabajado:
+Arreglo: `[9, 6, 8, 5, 8, 8, 7, 8, 8]`
+
+1. Inicio: `d = {}`, `max_conteo = 1`
+
+2. Leo `9` → no está en `d` → `d = {9: 1}`
+
+3. Leo `6` → no está → `d = {9: 1, 6: 1}`
+
+4. Leo `8` → no está → `d = {9: 1, 6: 1, 8: 1}`
+
+5. Leo `5` → no está → `d = {9: 1, 6: 1, 8: 1, 5: 1}`
+
+6. Leo otro `8` → ya está → `d[8] = 2` → `max_conteo = 2, dominante = 8`
+
+7. Leo otro `8` → `d[8] = 3` → `max_conteo = 3`
+
+8. Leo `7` → nuevo → `d = {..., 7: 1}`
+
+9. Leo `8` → `d[8] = 4` → `max_conteo = 4`
+
+10. Leo `8` → `d[8] = 5` → `max_conteo = 5`
+
+Al final: `dominante = 8` porque aparece `5 > 9/2 = 4.5` veces.
+
 ### ⚡ Complejidad
+- Tiempo: `O(N)` (Recorremos N elementos)
+- Memoria: `O(N)` (En el peor caso, todos los elementos son distintos, y el diccionario guarda N claves)
+  
+---
+
+### 📝 Solución 4 (Algoritmo Boyer-Moore) (pseudocódigo)
+```bash
+solucion4(X, N):
+    conteo = 0
+    for i = 0 to N-1
+        if conteo = 0              # 1. No tenemos candidato
+            conteo = 1             # 2. Tomamos Xi como nuevo candidato
+            dominante = Xi
+        else if dominante = Xi     # 3. Si Xi coincide con candidato
+            conteo += 1            #    sumamos al conteo
+        else                       # 4. Si Xi es diferente
+            conteo -= 1            #    le restamos "fuerza" al candidato
+    
+    # 5. Verificación final (por si no había dominante)
+    max_conteo = 0
+    for i = 0 to N-1
+        if Xi = dominante
+            max_conteo += 1
+    
+    if max_conteo > N/2
+        print dominante
+```
+#### 📌 Ejemplo trabajado:
+Arreglo: `[9, 6, 8, 5, 8, 8, 7, 8, 8]`
+
+1. Inicio: `conteo = 0`
+
+2. Leo `9`: como `conteo=0`, candidato = `9`, conteo=1
+
+3. Leo `6`: diferente → conteo=0
+
+4. Leo `8`: conteo=0 → candidato=`8`, conteo=1
+
+5. Leo `5`: diferente → conteo=0
+
+6. Leo `8`: conteo=0 → candidato=`8`, conteo=1
+
+7. Leo `8`: igual a candidato → conteo=2
+
+8. Leo `7`: diferente → conteo=1
+
+9. Leo `8`: igual a candidato → conteo=2
+
+10. Leo `8`: igual a candidato → conteo=3
+
+👉 El algoritmo propone `8` como candidato.
+
+Ahora verificamos en la **segunda pasada**:
+`8` aparece 5 veces de 9 → sí es dominante.
+
+### ⚡ Complejidad
+- Tiempo: `O(N)` 
+- Memoria: `O(1)` (Solo unas variables (`conteo` y `dominante`))
 
 ---
 
+### 📊 Comparación de soluciones (Elemento dominante)
 
+| Solución | Idea principal                                    | Tiempo       | Memoria |
+|----------|---------------------------------------------------|--------------|---------|
+| 1️⃣ Trivial     | Contar ocurrencias de cada elemento con doble `for` | O(N²)        | O(1)    |
+| 2️⃣ Ordenamiento | Ordenar el arreglo y contar elementos iguales seguidos | O(N log N)   | O(1)    |
+| 3️⃣ Diccionario  | Usar hash/diccionario para contar ocurrencias        | O(N)         | O(N)    |
+| 4️⃣ Boyer-Moore  | Ir “eliminando pares” hasta hallar un candidato      | O(N)         | O(1)    |
 
-
+---
