@@ -139,6 +139,8 @@ P = [0,0,1,2,2,3,3,4,4,4,4]
 - `P[5] = 3` significa que **hay 3 primos** ≤ 5 (2,3,5).
 - `P[10] = 4` significa que **hay 4 primos** ≤ 10 (2,3,5,7).
 
+---
+
 ## ⚡ Complejidad
 - Tiempo: `O(MAXN*log(log(MAXN))`
 - Cada consulta se responde en O(1).
