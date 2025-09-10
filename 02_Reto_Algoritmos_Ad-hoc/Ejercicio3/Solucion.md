@@ -157,3 +157,5 @@ P = [0,0,1,2,2,3,3,4,4,4,4]
     - Solo haces la criba **una vez** hasta 100000.
     - Cada consulta se resuelve en **O(1)** con `P[n]`.
     - Aunque haya 10000 consultas, es rapidísimo
+
+---
