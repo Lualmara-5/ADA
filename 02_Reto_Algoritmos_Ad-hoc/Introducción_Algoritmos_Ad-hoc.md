@@ -213,7 +213,7 @@ A es 1043, B es 987 → M = 1043, N = 987
 *Nota:* En Python existen los métodos gcd() y lcm() en la librería math*
 
 ### ⚡ Complejidad
-- La complejidad del algoritmo es O(log(max(A,B))
+- La complejidad del algoritmo es O(log(min(A,B))
 
 ---
 
@@ -521,3 +521,4 @@ Ahora verificamos en la **segunda pasada**:
 | 4️⃣ Boyer-Moore  | Ir “eliminando pares” hasta hallar un candidato      | O(N)         | O(1)    |
 
 ---
+
