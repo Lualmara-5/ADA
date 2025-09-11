@@ -2,7 +2,7 @@
 
 Se define la siguiente secuencia **NuNuDoN** (*N plus Number of Divisors of N*):  
 
-![Secuencia NuNuDoN](./Img/Secuencia_NuNuDoN.png)
+![Secuencia NuNuDoN](../Img/Secuencia_NuNuDoN.png)
 
 Por lo que los primeros seis términos de dicha secuencia serían: `1, 2, 4, 7, 9, 12`.
 
