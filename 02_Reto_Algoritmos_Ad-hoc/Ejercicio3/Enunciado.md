@@ -1,4 +1,4 @@
-# 🔢 Teorema de los números primos
+# 🔢 Ejercicio 3: Teorema de los números primos
 
 El **teorema de los números primos** describe la distribución asintótica de los números primos y formaliza la idea intuitiva de que los primos son menos frecuentes conforme los números crecen.
 
